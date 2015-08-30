@@ -1,0 +1,34 @@
+ВОПРОС:
+<div>
+<h2> What will the line of code below print out? (Consider 32 bit
+architecture)</h2>
+</div>
+<pre><code class="language-cpp">
+cout << 25u - 50;
+</code></pre>
+
+ОТВЕТЫ:
+1) -25<br>
+2) 0<br>
+3) 4294967271<br>
+4) 4294967321<br>
+
+<br>
+ПРАВИЛЬНЫЙ ОТВЕТ:<br>
+3<br>
+
+<br>
+ОТВЕТ РАЗВЕРНУТЫЙ:<br>
+<p> The answer is not -25. Rather, the answer (which will surprise many) is 4294967271, assuming 32 bit integers. Why?</p>
+
+<p> In C++, if the types of two operands differ from one another, then the
+operand with the “lower type” will be promoted to the type of the “higher
+type” operand, using the following type hierarchy (listed here from highest
+type to lowest type): long double, double, float, unsigned long int, long int,
+unsigned int, int (lowest).</p>
+
+<p> So when the two operands are, as in our example, 25u (unsigned int) and 50 (int), the 50 is promoted to also being an unsigned integer (i.e., 50u). </p>
+
+<p> Moreover, the result of the operation will be of the type of the operands.  Therefore, the result of 25u - 50u will itself be an unsigned integer as well.  So the result of -25 converts to 4294967271 when promoted to being an unsigned integer.  </p>
+
+<a href="http://www.toptal.com/c-plus-plus/interview-questions">Source</a>

@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>questions</key>
+	<array>
+		<dict>
+			<key>Comment</key>
+			<string>array layout</string>
+			<key>Id</key>
+			<string>108</string>
+			<key>Tags</key>
+			<string>C/C++</string>
+			<key>Level</key>
+			<string>3</string>
+			<key>Correct Answers</key>
+			<string>4</string>
+			<key>answers</key>
+			<array>
+				<string>The result is 3</string>
+				<string>The result is 7</string>
+				<string>The result is 9</string>
+				<string>The result is 11</string>
+			</array>
+			<key>a</key>
+			<string>&lt;h2&gt;Output is 11&lt;/h2&gt;
+&lt;p&gt;C++ must compute the memory address of each array element that it accesses. C++ does this automatically, but it helps to understand what&apos;s going on &quot;under the hood&quot;. Assume the following declaration:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cpp&quot;&gt;
+char a[ROWS][COLS];  // assume ROWS and COLS are const ints
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Because arrays are laid out in memory by row, each &lt;i&gt;row length&lt;/i&gt; is COLS (the number of columns is the size of a row). Let&apos;s assume that you want to find the address of a[r][c]. The &lt;i&gt;baseAddress&lt;/i&gt; of the array is the address of the first element. The &lt;i&gt;rowSize&lt;/i&gt; is COLS in the above example. The &lt;i&gt;elementSize&lt;/i&gt; is the number of bytes required to represent the data (typically 1 for char, 4 for int, 4 for float, and 8 for double).&lt;/p&gt;
+
+&lt;p&gt;address = baseAddress + elementSize * (r*rowSize + c);&lt;/p&gt;
+
+&lt;p&gt;Note:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;The number of rows (ROWS) is not used in the computation.&lt;/li&gt;
+	&lt;li&gt;Because the number of rows is not used, there is no need to pass it when declaring a formal array parameter for a two-dimension array.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;a href=&quot;http://www.fredosaurus.com/notes-cpp/arrayptr/23two-dim-array-memory-layout.html&quot;&gt;Blog post&lt;/a&gt;</string>
+			<key>q</key>
+			<string>&lt;h2&gt;What will be the output of this code?&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cpp&quot;&gt;
+#include &lt;stdio.h&gt;
+
+int main(int argc, char** argv){
+     int testArr[3][2][2] = {1,2,3,4,5,6,7,8,9,10,11,12};
+
+     const int val = testArr[2][1][0];
+     printf(&quot;%d\n&quot;,val);
+
+     return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>returning local object</string>
+			<key>Id</key>
+			<string>107</string>
+			<key>Tags</key>
+			<string>C/C++</string>
+			<key>Level</key>
+			<string>1</string>
+			<key>Correct Answers</key>
+			<string>1</string>
+			<key>answers</key>
+			<array>
+				<string>No</string>
+				<string>Yes</string>
+			</array>
+			<key>a</key>
+			<string>&lt;h2&gt;Returning local object by reference&lt;/h2&gt;
+&lt;p&gt;This is mostly a beginner’s mistake, but it is worth mentioning since there is a lot of legacy code that suffers from this issue. Programmer wanted to do some kind of optimization by avoiding unnecessary copying.&lt;/p&gt;
+
+&lt;p&gt;The object “sum” will now point to the local object “result”. But where is the object “result” located after the SumComplex function is executed? Nowhere. It was located on the stack, but after the function returned the stack was unwrapped and all local objects from the function were destructed. This will eventually result in an undefined behaviour, even for primitive types. To avoid performance issues, sometimes it is possible to use return value optimization:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cpp&quot;&gt;
+Complex SumComplex(const Complex&amp; a, const Complex&amp; b)
+{
+     return Complex(a.real + b.real, a.imaginar + b.imaginar);
+}
+
+Complex sum = SumComplex(a, b);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For most of today’s compilers, if a return line contains a constructor of an object the code will be optimized to avoid all unnecessary copying - the constructor will be executed directly on the “sum” object.&lt;/p&gt;
+
+&lt;a href=&quot;http://www.toptal.com/c-plus-plus/top-10-common-c-plus-plus-developer-mistakes&quot;&gt;Source&lt;/a&gt;</string>
+			<key>q</key>
+			<string>&lt;div&gt;
+&lt;h2&gt;Is code below valid?&lt;/h2&gt;
+&lt;/div&gt;
+&lt;pre&gt;&lt;code class=&quot;language-cpp&quot;&gt;
+Complex&amp; SumComplex(const Complex&amp; a, const Complex&amp; b)
+{
+    Complex result;
+
+    return result;
+}
+
+const Complex&amp; sum = SumComplex(a, b);
+&lt;/code&gt;&lt;/pre&gt;</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>virtual destructor</string>
+			<key>Id</key>
+			<string>106</string>
+			<key>Tags</key>
+			<string>C/C++</string>
+			<key>Level</key>
+			<string>2</string>
+			<key>Correct Answers</key>
+			<string>2</string>
+			<key>answers</key>
+			<array>
+				<string>No</string>
+				<string>Yes</string>
+			</array>
+			<key>a</key>
+			<string>&lt;div&gt;
+&lt;h2&gt;Forgotten virtual destructor&lt;/h2&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This is one of the most common errors that leads to &lt;b&gt;memory leaks&lt;/b&gt; inside derived classes if there is dynamic memory allocated inside them. There are some cases when virtual destructor is not desirable, i.e. when a class is not intended for inheritance and its size and performance is crucial. Virtual destructor or any other virtual function introduces additional data inside a class structure, i.e. a pointer to a virtual table which makes the size of any instance of the class bigger.&lt;/p&gt;
+
+&lt;p&gt;However, in most cases classes can be inherited even if it is not originally intended. So it is a very good practice to add a virtual destructor when a class is declared. Otherwise, if a class must not contain virtual functions due to performance reasons, it is a good practice to put a comment inside a class declaration file indicating that the class should not be inherited. One of the best options to avoid this issue is to use an IDE that supports virtual destructor creation during a class creation.&lt;/p&gt;
+
+&lt;p&gt;One additional point to the subject are classes/templates from the standard library. They are not intended for inheritance and they do not have a virtual destructor. If, for example, we create a new enhanced string class that publicly inherits from &lt;b&gt;std::string&lt;/b&gt; there is possibility that somebody will use it incorrectly with a pointer or a reference to &lt;b&gt;std::string&lt;/b&gt; and cause a memory leak.&lt;/p&gt;
+
+&lt;p&gt;To avoid such C++ issues, a safer way of reusing of a class/template from the standard library is to use private inheritance or composition.&lt;/p&gt;
+
+&lt;a href=&quot;http://www.toptal.com/c-plus-plus/top-10-common-c-plus-plus-developer-mistakes?utm_medium=sponsored_post&amp;utm_campaign=cpp_mistakes&amp;utm_source=facebook.com&quot;&gt;Source&lt;/a&gt;</string>
+			<key>q</key>
+			<string>&lt;div&gt;
+&lt;h2&gt;Is there  any problem in code below?&lt;/h2&gt;
+&lt;/div&gt;
+&lt;pre&gt;&lt;code class=&quot;language-cpp&quot;&gt;
+class MyString : public std::string
+{
+	~MyString(){
+	}
+};
+
+int main()
+{
+	std::string *s = new MyString();
+	delete s;
+}
+&lt;/code&gt;&lt;/pre&gt;</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>exception after new</string>
+			<key>Id</key>
+			<string>105</string>
+			<key>Tags</key>
+			<string>C/C++</string>
+			<key>Level</key>
+			<string>2</string>
+			<key>Correct Answers</key>
+			<string>2</string>
+			<key>answers</key>
+			<array>
+				<string>No</string>
+				<string>Yes</string>
+			</array>
+			<key>a</key>
+			<string>&lt;div&gt;
+&lt;h2&gt;Code has potential memory leak&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;If an exception is thrown, the &lt;b&gt;a&lt;/b&gt; object is never deleted. The following example shows a safer and shorter way to do that. It uses &lt;b&gt;auto_ptr&lt;/b&gt; which is deprecated in C++11, but the old standard is still widely used. It can be replaced with C++11 &lt;b&gt;unique_ptr&lt;/b&gt; or &lt;b&gt;scoped_ptr&lt;/b&gt; from Boost if possible.
+&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-cpp&quot;&gt;
+void SomeMethod()
+{
+  std::auto_ptr&lt;ClassA&gt; a(new ClassA); 
+  SomeOtherMethod();      // it can throw an exception
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;A bit about exceptions&lt;/h3&gt;
+
+&lt;p&gt;In the C++ exception mechanism, control moves from the throw statement to the first catch statement that can handle the thrown type. When the catch statement is reached, all of the automatic variables that are in scope between the throw and catch statements are destroyed in a process that is known as stack unwinding. In stack unwinding, execution proceeds as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Control reaches the &lt;b&gt;try&lt;/b&gt; statement by normal sequential execution. The guarded section in the &lt;b&gt;try&lt;/b&gt; block is executed.&lt;/li&gt;
+
+&lt;li&gt;If no exception is thrown during execution of the guarded section, the &lt;b&gt;catch&lt;/b&gt; clauses that follow the &lt;b&gt;try&lt;/b&gt; block are not executed. Execution continues at the statement after the last &lt;b&gt;catch&lt;/b&gt; clause that follows the associated &lt;b&gt;try&lt;/b&gt; block.&lt;/li&gt;
+
+&lt;li&gt;If an exception is thrown during execution of the guarded section or in any routine that the guarded section calls either directly or indirectly, an exception object is created from the object that is created by the &lt;b&gt;throw&lt;/b&gt; operand. (This implies that a copy constructor may be involved.) At this point, the compiler looks for a &lt;b&gt;catch&lt;/b&gt; clause in a higher execution context that can handle an exception of the type that is thrown, or for a &lt;b&gt;catch&lt;/b&gt; handler that can handle any type of exception. The &lt;b&gt;catch&lt;/b&gt; handlers are examined in order of their appearance after the &lt;b&gt;try&lt;/b&gt; block. If no appropriate handler is found, the next dynamically enclosing &lt;b&gt;try&lt;/b&gt; block is examined. This process continues until the outermost enclosing &lt;b&gt;try&lt;/b&gt; block is examined.&lt;/li&gt;
+ 
+&lt;li&gt;If a matching handler is still not found, or if an exception occurs during the unwinding process but before the handler gets control, the predefined run-time function &lt;b&gt;terminate&lt;/b&gt; is called. If an exception occurs after the exception is thrown but before the unwind begins, &lt;b&gt;terminate&lt;/b&gt; is called.&lt;/li&gt;
+
+&lt;li&gt;If a matching &lt;b&gt;catch&lt;/b&gt; handler is found, and it catches by value, its formal parameter is initialized by copying the exception object. If it catches by reference, the parameter is initialized to refer to the exception object. After the formal parameter is initialized, the process of unwinding the stack begins. This involves the destruction of all automatic objects that were fully constructed—but not yet destructed—between the beginning of the &lt;b&gt;try&lt;/b&gt; block that is associated with the &lt;b&gt;catch&lt;/b&gt; handler and the throw site of the exception. Destruction occurs in reverse order of construction. The &lt;b&gt;catch&lt;/b&gt; handler is executed and the program resumes execution after the last handler—that is, at the first statement or construct that is not a &lt;b&gt;catch&lt;/b&gt; handler. Control can only enter a &lt;b&gt;catch&lt;/b&gt; handler through a thrown exception, never through a &lt;b&gt;goto&lt;/b&gt; statement or a &lt;b&gt;case&lt;/b&gt; label in a &lt;b&gt;switch&lt;/b&gt; statement.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;a href=&quot;https://msdn.microsoft.com/en-us/library/hh254939.aspx&quot;&gt;MSDN&lt;/a&gt;</string>
+			<key>q</key>
+			<string>&lt;div&gt;
+&lt;h2&gt;Do you see any problem here?&lt;/h2&gt;
+&lt;/div&gt;
+&lt;pre&gt;&lt;code class=&quot;language-cpp&quot;&gt;
+void someMethod() const
+{
+  ClassA* a = new ClassA;
+  SomeOtherMethod();
+  delete a;
+}
+&lt;/code&gt;&lt;/pre&gt;</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>pointer cast</string>
+			<key>Id</key>
+			<string>104</string>
+			<key>Tags</key>
+			<string>C/C++</string>
+			<key>Level</key>
+			<string>1</string>
+			<key>Correct Answers</key>
+			<string>2 + 3</string>
+			<key>answers</key>
+			<array>
+				<string></string>
+				<string></string>
+				<string></string>
+				<string></string>
+			</array>
+			<key>a</key>
+			<string>&lt;h2&gt;Lines 2 and 3 have errors&lt;/h2&gt;</string>
+			<key>q</key>
+			<string>&lt;h2&gt;What lines contain errors?&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&quot;language-cpp&quot;&gt;
+int main() 
+{ 
+  int data = 12; 
+  float fSum = 1.0f; 
+  int* pI = NULL; 
+  float* pF = NULL; 
+ 
+  pI = &amp;data; //1 
+  pI = &amp;fSum; //2 
+  pF = &amp;data; //3 
+  pF = &amp;fSum; //4 
+
+  return 0; 
+}
+&lt;/code&gt;&lt;/pre&gt;</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>basic types</string>
+			<key>Id</key>
+			<string>103</string>
+			<key>Tags</key>
+			<string>C/C++</string>
+			<key>Level</key>
+			<string>1</string>
+			<key>Correct Answers</key>
+			<string>1+3</string>
+			<key>answers</key>
+			<array>
+				<string>int</string>
+				<string>string</string>
+				<string>float</string>
+				<string>vector</string>
+			</array>
+			<key>a</key>
+			<string>&lt;h2&gt;Basic types&lt;/h2&gt;
+&lt;p&gt;The C language provides many basic types. Most of them are formed from one of the four basic arithmetic type specifiers in C (char, int, float and double), and optional specifiers (signed, unsigned, short, long).&lt;/p&gt;
+
+&lt;h3&gt;Primitive Data Type&lt;/h3&gt;
+&lt;p&gt;In computer science, primitive data type is either of the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a &lt;i&gt;basic type&lt;/i&gt; is a data type provided by a programming language as a basic building block. Most languages allow more complicated composite types to be recursively constructed starting from basic types.&lt;/li&gt;
+&lt;li&gt;a &lt;i&gt;built-in&lt;/i&gt; type is a data type for which the programming language provides built-in support.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In most programming languages, all basic data types are built-in. In addition, many languages also provide a set of composite data types. Opinions vary as to whether a built-in type that is not basic should be considered &quot;primitive”.&lt;/p&gt;
+
+&lt;p&gt;Depending on the language and its implementation, primitive data types may or may not have a one-to-one correspondence with objects in the computer&apos;s memory. However, one usually expects operations on basic primitive data types to be the fastest language constructs there are. Integer addition, for example, can be performed as a single machine instruction, and some processors offer specific instructions to process sequences of characters with a single instruction. In particular, the C standard mentions that &quot;a &apos;plain&apos; int object has the natural size suggested by the architecture of the execution environment&quot;. This means that int is likely to be 32 bits long on a 32-bit architecture. Basic primitive types are almost always value types.&lt;p&gt;
+
+&lt;p&gt;Most languages do not allow the behavior or capabilities of primitive (either built-in or basic) data types to be modified by programs. Exceptions include Smalltalk, which permits all data types to be extended within a program, adding to the operations that can be performed on them or even redefining the built-in operations.&lt;/p&gt;
+
+&lt;a href=&quot;http://en.wikipedia.org/wiki/Primitive_data_type&quot;&gt;&lt;/a&gt;</string>
+			<key>q</key>
+			<string>&lt;div&gt;
+&lt;h2&gt;Please select only Primitive/Basic Data Types&lt;/h2&gt;
+&lt;p&gt;(select many)&lt;/p&gt;
+&lt;/div&gt;</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>correct pointer to function declaration</string>
+			<key>Id</key>
+			<string>102</string>
+			<key>Tags</key>
+			<string>C/C++</string>
+			<key>Level</key>
+			<string>4</string>
+			<key>Correct Answers</key>
+			<string>4+0</string>
+			<key>answers</key>
+			<array>
+				<string>typedef double ()*fptr();</string>
+				<string>typedef double ()*fptr()[];</string>
+				<string>typedef float *()fptr();</string>
+				<string>typedef int (*fptr)();</string>
+			</array>
+			<key>a</key>
+			<string>&lt;h2&gt;Function Pointer Syntax&lt;/h2&gt;
+&lt;p&gt;The syntax for declaring a function pointer might seem messy at first, but in most cases it&apos;s really quite straight-forward once you understand what&apos;s going on. Let&apos;s look at a simple example:&lt;p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cpp&quot;&gt;
+void (*foo)(int);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this example, foo is a pointer to a function taking one argument, an integer, and that returns void. It&apos;s as if you&apos;re declaring a function called &quot;*foo&quot;, which takes an int and returns void; now, if *foo is a function, then foo must be a pointer to a function. (Similarly, a declaration like int *x can be read as *x is an int, so x must be a pointer to an int.)&lt;/p&gt;
+
+&lt;p&gt;The key to writing the declaration for a function pointer is that you&apos;re just writing out the declaration of a function but with (*func_name) where you&apos;d normally just put func_name.&lt;/p&gt;
+
+&lt;h3&gt;Reading Function Pointer Declarations&lt;/h3&gt;
+
+&lt;p&gt;Sometimes people get confused when more stars are thrown in:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cpp&quot;&gt;
+void *(*foo)(int *);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p?Here, the key is to read inside-out; notice that the innermost element of the expression is *foo, and that otherwise it looks like a normal function declaration. *foo should refer to a function that returns a void * and takes an int *. Consequently, foo is a pointer to just such a function.&lt;/p&gt;
+
+&lt;a href=&quot;http://www.cprogramming.com/tutorial/function-pointers.html&quot;&gt;Source&lt;/a&gt;</string>
+			<key>q</key>
+			<string>&lt;div&gt;
+&lt;h2&gt;Select only correct definitions&lt;/h2&gt;
+&lt;p&gt;(select many)&lt;/p&gt;
+&lt;/div&gt;</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>static members of class</string>
+			<key>Id</key>
+			<string>101</string>
+			<key>Tags</key>
+			<string>C/C++</string>
+			<key>Level</key>
+			<string>1</string>
+			<key>Correct Answers</key>
+			<string>4</string>
+			<key>answers</key>
+			<array>
+				<string>All such static members will continue to live until last object of that class exists</string>
+				<string>These members are destroyed and memory is deallocated</string>
+				<string>These members get initial values set</string>
+				<string>These members continue to exist even if all objects of that class are freed</string>
+			</array>
+			<key>a</key>
+			<string>&lt;p&gt;Static members of that class will continue to exist even if all objects of that class are freed (destructed, released, out of scope…)&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-cpp&quot;&gt;
+class StarDestroyer {
+public:
+	static Button m_selfDestructionButton;
+	static int m_destroyedStarsCount;
+};
+
+// Do not forget to init these members later in cpp file
+Button StarDestroyer::m_selfDestructionButton();
+int StartDestroyer::m_destroyedStarsCount = 0;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can define class members static using &lt;b&gt;static&lt;/b&gt; keyword. When we declare a member of a class as static it means no matter how many objects of the class are created, there is only one copy of the static member.&lt;/p&gt;
+
+&lt;p&gt;A static member is shared by all objects of the class. All static data is initialized to zero when the first object is created, if no other initialization is present. We can&apos;t put it in the class definition but it can be initialized outside the class as done in the following example by redeclaring the static variable, using the scope resolution operator &lt;b&gt;::&lt;/b&gt; to identify which class it belongs to.&lt;p&gt;
+
+&lt;a href=&quot;http://www.tutorialspoint.com/cplusplus/cpp_static_members.htm&quot;&gt;Source&lt;/a&gt;</string>
+			<key>q</key>
+			<string>&lt;div&gt;
+&lt;h2&gt;What happens to static members of a class after it’s object is destructed?&lt;/h2&gt;
+&lt;/div&gt;
+&lt;pre&gt;&lt;code class=&quot;language-cpp&quot;&gt;
+class StarDestroyer {
+public:
+	static Button m_selfDestructionButton;
+	static int m_destroyedStarsCount;
+};
+&lt;/code&gt;&lt;/pre&gt;</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>stdafx.h</string>
+			<key>Id</key>
+			<string>100</string>
+			<key>Tags</key>
+			<string>C/C++</string>
+			<key>Level</key>
+			<string>1</string>
+			<key>Correct Answers</key>
+			<string>1+4</string>
+			<key>answers</key>
+			<array>
+				<string>By reference</string>
+				<string>By name</string>
+				<string>By pointer</string>
+				<string>By value</string>
+			</array>
+			<key>a</key>
+			<string>&lt;div&gt;
+    &lt;h2&gt;There are 2 ways to pass an argument to function in C/C++&lt;/h2&gt;
+    &lt;p&gt;1. By value&lt;/p&gt;
+    &lt;p&gt;2. By reference&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Passing arguments by reference&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-cpp&quot;&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+// this function can change values of a, b, c
+void duplicate (int&amp; a, int&amp; b, int&amp; c)
+{
+  a*=2;
+  b*=2;
+  c*=2;
+}
+
+int main ()
+{
+  int x=1, y=3, z=7;
+  duplicate (x, y, z);
+ 
+  // Output will be:
+  // x=2, y=6, z=14
+  //
+  cout &lt;&lt; &quot;x=&quot; &lt;&lt; x &lt;&lt; &quot;, y=&quot; &lt;&lt; y &lt;&lt; &quot;, z=&quot; &lt;&lt; z;
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Passing arguments by value&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cpp&quot;&gt;
+// Each string will be copied
+std::string concatenate(std::string a, std::string b)
+{
+  return a+b;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;a href=&quot;http://www.cplusplus.com/doc/tutorial/functions/&quot;&gt;Source&lt;/a&gt;</string>
+			<key>q</key>
+			<string>&lt;div&gt;
+    &lt;h2&gt;How can we pass arguments to function in C/C++?&lt;/h2&gt;
+    &lt;p&gt;(Select many)&lt;/p&gt;
+&lt;/div&gt;
+&lt;pre&gt;&lt;code class=&quot;language-cpp&quot;&gt;
+int functionOne(int param1, int param2){
+	return param1 + param2;
+}
+&lt;/code&gt;&lt;/pre&gt;</string>
+		</dict>
+	</array>
+</dict>
+</plist>
