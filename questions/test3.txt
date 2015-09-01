@@ -1,23 +1,28 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Choose the right option </h2>
 </div>
 <pre><code class="language-cpp">
-
+string* x, y;
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+<br>1) x is a pointer to a string, y is a string
+<br>2) y is a pointer to a string, x is a string
+<br>3) both x and y are pointer to string types
+<br>4) none of the mentioned
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+1
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+<p> The '*' is to be grouped with the variables not the data types. So when using '*' in such declaration of several variables it is necessary to insert it befor each variable like following: <br>string *x, *y; </p>
+
+<p> For the good practice always avoid using declaration of several variables in one line. It is prefferable to use the following form: <br> string *x; <br> string *y; </p>
 
 <br>
 <a href="">Source</a>
