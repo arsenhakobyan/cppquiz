@@ -1,23 +1,47 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the output of the following C++ program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include<iostream>
+using namespace std;
 
+class Base 
+{
+  public:
+    int fun()      { cout << "Base::fun() called"; }
+    int fun(int i) { cout << "Base::fun(int i) called"; }
+};
+
+class Derived: public Base 
+{
+  public:
+    int fun(char x)   { cout << "Derived::fun(char ) called"; }
+};
+
+int main() 
+{
+  Derived d;
+  d.fun();
+  return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+<br>1) Compiler Error.
+<br>2) Base::fun() called
+<br>3) Base::fun(int i) called
+<br>3) Derived::fun(char ) called
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+1
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+<p>In the above program, fun() of base class is not accessible in the derived class. If a derived class creates a member method with name same as one of the methods in base class, then all the base class methods with this name become hidden in derived class. </p>
+<p>Even if the signature of the derived class method is different, all the overloaded methods in base class become hidden.</p>
 
 <br>
-<a href="">Source</a>
+<a href="http://www.geeksforgeeks.org/">Source</a>

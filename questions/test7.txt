@@ -1,23 +1,37 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the output of the following C++ program? </h2>
 </div>
 <pre><code class="language-cpp">
-
+#include <iostream>
+using namespace std;
+ 
+template <int i>
+int fun()
+{
+     i = 20;
+     cout << "fun" << i <<  endl;
+}
+ 
+int main() {
+     fun<4>();
+        return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+<br>1) fun 4
+<br>2) fun 20
+<br>3) compiler error
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+3
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+<p>The value of nontype parameters must be constant as they are used at compile time to create instance of classes/functions. In the above program, templated fun() receives a nontype parameter and tries to modify it which is not possible. Therefore, compiler error.</p>
 
 <br>
-<a href="">Source</a>
+<a href="http://www.geeksforgeeks.org/">Source</a>

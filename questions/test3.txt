@@ -25,4 +25,5 @@ string* x, y;
 <p> For the good practice always avoid using declaration of several variables in one line. It is prefferable to use the following form: <br> string *x; <br> string *y; </p>
 
 <br>
-<a href="">Source</a>
+<a
+href="http://www.sanfoundry.com/c-plus-plus-aptitude-question-answer-pointers/">Source</a>

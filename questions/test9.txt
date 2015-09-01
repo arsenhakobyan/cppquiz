@@ -1,23 +1,43 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the output of the following C++ program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include<iostream>
+using namespace std;
+
+int x = 10;
+void fun()
+{
+  int x = 2;
+  {
+    int x = 1;
+    cout << ::x << endl; 
+  }
+}
+
+int main()
+{
+  fun();
+  return 0;
+}
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+<br>1) 2
+<br>2) 10
+<br>3) 1
+<br>4) compiler error for variable redefinition
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+2
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+<p>If Scope Resolution Operator is placed before a variable name then the global variable is referenced. So if we remove the following line from the above program then it will fail in compilation.</p>
 
 <br>
-<a href="">Source</a>
+<a href="http://www.geeksforgeeks.org/">Source</a>

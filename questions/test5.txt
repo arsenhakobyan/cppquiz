@@ -1,23 +1,59 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the output of the following program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include<iostream>
 
+using namespace std;
+
+class A
+{
+  public:
+    virtual void fun() {cout << "A" << endl ;}
+};
+class B: public A
+{
+  public:
+    virtual void fun() {cout << "B" << endl;}
+};
+class C: public B
+{
+  public:
+    virtual void fun() {cout << "C" << endl;}
+};
+
+int main()
+{
+  A *a = new C;
+  A *b = new B;
+  a->fun();
+  b->fun();
+  return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+<br>1) C
+<br>   B
+<br>
+<br>2) A
+<br>   B
+<br>
+<br>3) B
+<br>   B
+<br>
+<br>4) A
+<br>   A
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+1
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+<p>A base class pointer can point to objects of children classes. A base class pointer can also point to objects of grandchildren classes. Therefor, the line “A *a = new C;” is valid. The line “a->fun();” prints “C” because the object pointed is of class C and fun() is declared virtual in both A and B (See this for details). The second line of output is printed by statement “b->fun();”.</p>
 
 <br>
-<a href="">Source</a>
+<a href="http://www.geeksforgeeks.org/">Source</a>

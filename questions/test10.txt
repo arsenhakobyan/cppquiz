@@ -1,23 +1,46 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the output of the following C++ program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include<iostream>
+using namespace std;
+class Point {
+  private:
+    int x;
+    int y;
+  public:
+    Point(int i, int j);  // Constructor
+};
 
+Point::Point(int i = 0, int j = 0)  {
+  x = i;
+  y = j;
+  cout << "Constructor called";
+}
+
+int main()
+{
+  Point t1, *t2;
+  return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+<br>1) Constructor called
+<br>2) Constructor called
+       Constructor called
+<br>3) Compiler Error
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+1
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+<p>If we take a closer look at the statement “Point t1, *t2;:” then we can see that only one object is constructed here. t2 is just a pointer variable, not an object.</p>
 
 <br>
-<a href="">Source</a>
+<a href="http://www.geeksforgeeks.org/">Source</a>

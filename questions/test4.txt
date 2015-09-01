@@ -1,23 +1,26 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Which of the following function declaration is/are incorrect? (multiple
+    answers are acceptable)</h2>
 </div>
 <pre><code class="language-cpp">
-
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+<br>1)  int Sum(int a, int b = 2, int c = 3);
+<br>2)  int Sum(int a = 5, int b);
+<br>3)  int Sum(int a = 0, int b, int c = 3);
+<br>4)  int Sum(int a = 2);
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+2 and 3
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+<p>Important two rules apply when using default arguments. First, only rightmost arguments should be defaulted. This means that a default argument cannot be followed by a non-default argument in a function call. Secondly, once a default argument is used in function call, all the subsequent arguments in that function’s argument list must be defaulted. </p>
 
 <br>
-<a href="">Source</a>
+<a
+href="http://simplifiedcplus.blogspot.com/p/default-arguments-and-function.html">Source</a>
