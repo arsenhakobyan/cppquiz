@@ -1,0 +1,23 @@
+ВОПРОС:
+<div>
+<h2>  </h2>
+</div>
+<pre><code class="language-cpp">
+
+</code></pre>
+
+ОТВЕТЫ:
+1)
+2)
+3)
+
+<br>
+<br>
+ПРАВИЛЬНЫЙ ОТВЕТ:
+
+
+<br> <br>
+ОТВЕТ РАЗВЕРНУТЫЙ:
+
+<br>
+<a href="">Source</a>
