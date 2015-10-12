@@ -1,23 +1,30 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> If you have an array of characters allocated with new. Which of the
+following is the best way to modify the size of the array? </h2>
 </div>
 <pre><code class="language-cpp">
-
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) Use the realloc function from libc
+2) Delete the existing array, then allocate a new array and copy the data from the old array to the new array
+3) Allocate a new array, copy the data from old array to the new array and then delete the old array
+4) It is not possible to do such an operation in C++
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+3) Allocate a new array, copy the data from old array to the new array and
+then delete the old array
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+You can not use realloc, because realloc may call free on memory allocated
+with new which is bad. You can do the same thing realloc does manually, but
+make sure not to delete the original array until after copying the data. Also
+you may want to check the size of the new array. If the new array is smaller
+than the old one, you may not need to do the reallocation depeding on the
+business logic.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

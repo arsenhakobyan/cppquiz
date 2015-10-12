@@ -1,23 +1,47 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What gets printed? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+struct A
+{
+    A() : val(0) {}
+    A(int v) : val(v) {}
+    A(A& a) : val(a.val) {} 
+
+    int val;
+};
+
+int main(int argc, char** argv)
+{
+    const A a1;
+    const A a2(5);
+    const A a3 = a2;
+
+    std::cout << a1.val + a2.val + a3.val << std::endl;
+
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 0
+2) 5
+3) 10
+4) code is ill-formed
+5) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+4) code is ill-formed
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+The program is ill-formed. The third line of main tries to initialize a3 with
+a2, but A's copy constructor takes a non-const reference which violates a2's
+const declaration.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

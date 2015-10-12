@@ -1,23 +1,46 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Which lines below are ill-formed? </h2>
 </div>
 <pre><code class="language-cpp">
-
+1 #include <iostream>
+2
+3 struct A
+4 {
+5   A(int& var) : r(var) {}
+6
+7   int &r;
+8 };
+9
+10 int main(int argc, char** argv)
+11 {
+12   int x = 23;
+13
+14   A a1(x);
+15
+16   A a2 = a1;
+17
+18   a2 = a1;
+19
+20   return 0;
+21 }
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 14
+2) 16
+3) 18
+4) 14, 16
+5) 16, 18
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+3) 18
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+It is ill-formed to use an implicitly defined assignment operator when one of
+the members that will need to be copied is a reference. (Line 18)
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

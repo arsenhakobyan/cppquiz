@@ -1,23 +1,38 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> According to the C++ standard which of the following declarations for the
+"main" function are valid?</h2>
 </div>
 <pre><code class="language-cpp">
-
+1 int main(int argc, char** argv)
+2 int main(char** argv, int argc)
+3 int main()
+4 inline int main(int argc, char* argv[])
+5 int main(char* argv[], int argc)
+6 void main()
+7 int main(int argc, char* argv[])
+8 static int main()
+9 int main(int argc, char* argv[], char* options[])
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 1, 6, 9
+2) 3, 4, 5, 7
+3) 1, 4, 8
+4) 3, 7, 9
+5) 3, 6
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+4) 3, 7, 9
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+According to section 3.6.1 pg2, main must return an int, and must have either
+no parameters or (int argc ,char* argv[]) as its first set of parameters. And
+in section 3.6.1 pg3: A program that declares main to be inline or static is
+ill-formed.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

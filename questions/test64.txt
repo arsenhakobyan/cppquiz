@@ -1,23 +1,47 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What gets printed for the value of z? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+struct Foo
+{
+    Foo(int n) : x(n++), y(n++), z(n++) {}
+    int x;
+    int y;
+    int z;
+};
+
+int main(int argc, char** argv)
+{
+    Foo f(3);
+
+    std::cout << "x: " << f.x << std::endl;
+    std::cout << "y: " << f.y << std::endl;
+    std::cout << "z: " << f.z << std::endl;
+
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 3
+2) 4
+3) 5
+4) code is ill-formed
+5) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+3) 5
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+There is a sequence point after the initalization of each base and member,
+thus the code is well-formed and defined.  After two increment operator
+execution called by the Foo's constructor the member 'z' is initialised with
+value 5.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

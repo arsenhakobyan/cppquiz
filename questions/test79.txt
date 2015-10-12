@@ -1,23 +1,56 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What gets printed by the code below? </h2>
 </div>
 <pre><code class="language-cpp">
-
+01 #include <iostream>
+02
+03 class A
+04 {
+05 public:
+06    void foo() const { std::cout << "A"; }
+07 };
+08
+09 class B
+11 {
+12 public:
+13    void foo() const { std::cout << "B"; }
+14 };
+15
+16 class C : public A, public B
+17 {
+18    using A::foo;
+19 };
+20
+21 int main()
+22 {
+23    C c;
+24    c.foo();
+25    return 0;
+26 }
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) A
+2) B
+3) AB
+4) Compiler error on line 24
+5) Undefined behavior
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+4) Compiler error on line 24
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+The accessibility property of the introduced foo method from the A type is
+private in the C type, hence it will not be publicly accessible. This is the
+case regardless of the fact that the A type is publicly derived and the foo
+method has public accessibility in A type. This is further explained in the
+C++ standard, section 7.3.3 pg 15 by the following: "The alias created by the
+using- declaration has the usual accessibility for a member-declaration."
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

@@ -1,23 +1,42 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Which lines below should not compile? </h2>
 </div>
 <pre><code class="language-cpp">
-
+1 struct A
+2 {
+3    A(int x) : n(x) {}
+4    int n;
+5 };
+6
+7 int main(int argc, char** argv)
+8 {
+9    A a1;
+10   A a2(2);
+11   A a3(a2);
+12   return 0;
+13 }
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) none
+2) 9
+3) 10
+4) 11
+5) 9 and 10 and 11
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+2) 9
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+If any user-declared constructor is present in the class, then no default
+constructor will be created implicitly. Additionally if no user declared copy
+constructor is declared, then an implicit copy constructor will be created by
+the compiler. In this example there is a user-declared constructor which
+prevents the default constructor from existing, but a copy constructor is
+still created implicitly.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

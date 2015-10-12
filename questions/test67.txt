@@ -1,23 +1,51 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the maximum number of implicitly defined constructors that this
+struct will have? </h2>
 </div>
 <pre><code class="language-cpp">
-
+struct A
+{
+    A(A& a) { }
+    A(double d) {}
+    int val;
+};
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 0
+2) 1
+3) 2
+4) implementation specified
+5) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+1) 0
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+A default constructor is a constructor which can be called with no arguments
+(either defined with an empty parameter list, or with default arguments
+provided for every parameter). A type with a public default constructor is
+DefaultConstructible.
+If no user-defined constructors of any kind are provided for a class type
+(struct, class, or union), the compiler will always declare a default
+constructor as an inline public member of its class.
+If some user-defined constructors are present, the user may still force the
+automatic generation of a default constructor by the compiler that would be
+implicitly-declared otherwise with the keyword default. (since C++11)
 
+If the implicitly-declared default constructor is not defined as deleted, it
+is defined (that is, a function body is generated and compiled) by the
+compiler, and it has exactly the same effect as a user-defined constructor
+with empty body and empty initializer list. That is, it calls the default
+constructors of the bases and of the non-static members of this class.
+If some user-defined constructors are present, the user may still force the
+automatic generation of a default constructor by the compiler that would be
+implicitly-declared otherwise with the keyword default. (since C++11)
+
+There will be no implicitly defined constructors for this struct.
 <br>
-<a href="">Source</a>
+<a href="http://en.cppreference.com/w/cpp/language/default_constructor">Source</a>

@@ -1,23 +1,47 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What should get printed in the program below? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
+using namespace std;
 
+class foo{
+    public:
+        foo() : z(x+1), y(2), x(3)
+    {
+        cout << "z: " << z << endl;
+    }
+    private:
+        int x;
+        int y;
+        int z;
+};
+
+int main(int argc, char** argv){
+    foo f;
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 1
+2) 2
+3) 3
+4) 4
+5) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+4) 4
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+the value of z is initialized to 4. According the C++ standard: non-static
+data members shall be initialized in the order they were declared in the class
+definition, regardless of the order of the mem-initializers. Therefore x is
+initialized to 3 before z is initialized to X + 1.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

@@ -1,23 +1,54 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Which lines below should not compile? </h2>
 </div>
 <pre><code class="language-cpp">
-
+1 #include <iostream>
+2
+3 class Bar
+4 {
+5 protected:
+6   static int x;
+7   int y;
+8 };
+9
+10 int  Bar::x = 33;
+11
+12 class Barrel : public Bar
+13 {
+14 public:
+15   void foo(Bar* b, Barrel* d)
+16   {
+17     b->y = 0;
+18     d->y = 0;
+19     Bar::x = 0;
+20     Barrel::x = 0;
+21   }
+22 };
+23
+24 int main(int argc, char** argv)
+25 {
+26   Barrel b;
+27   b.foo(&b, &b);
+28   return 0;
+29 }
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
-
+1) none
+2) 17
+3) 18
+4) 19
+5) 20 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+2) 17
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+Line 17 should not compile. Access to non-static protected members of a base
+class can not be via a pointer or reference to the base class.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

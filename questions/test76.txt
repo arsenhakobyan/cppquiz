@@ -1,23 +1,48 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Given the code below what will be the output to stdout? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <cstdio>
 
+00 void foo(int v1, int v2, int v3, int v4)
+01 {
+02    printf("%d %d %d %d\n",v1,v2,v3,v4);
+03 }
+04
+05 int main()
+06 {
+07    int lut[] = { 1, 2, 3, 4 };
+08    int idx = 0;
+09    foo(lut[idx++],lut[idx++],lut[idx++],lut[idx++]);
+10    return 0;
+11 }
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 1 2 3 4
+2) 0 1 2 3
+3) 4 3 2 1
+4) Compiler Error
+5) Undefined behavior
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+5) Undefined behavior
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+As per the standard section 5.4: "Except where noted, the order of evaluation
+of operands of individual operators and subexpressions of individual
+expressions, and the order in which side effects take place, is unspecified58)
+Between the previous and next sequence point a scalar object shall have its
+stored value modified at most once by the evaluation of an expression.
+Furthermore, the prior value shall be accessed only to determine the value to
+be stored. The requirements of this paragraph shall be met for each allowable
+ordering of the subexpressions of a full expression; otherwise the behavior is
+undefined."
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

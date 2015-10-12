@@ -1,23 +1,63 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What gets printed? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+int foo(int i)
+{
+    return 2;
+}
+
+double foo(double d)
+{
+    return 4.0;
+}
+
+struct Computer
+{
+    int foo(int i)
+    {
+        return 8; 
+    }
+};
+
+struct Gateway : public Computer
+{
+    double foo(double d)
+    {
+        return 16.0; 
+    }
+};
+
+int main(int argc, char** argv)
+{
+    Gateway g;
+
+    std::cout << foo(1) + foo(1.0) + g.foo(1) + g.foo(1.0) << std::endl;
+
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 20
+2) 30
+3) 38
+4) 40
+5) The code is ill-formed
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+3) 38
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+When calling global foo, the function is overloaded and each foo is called
+once depending on the type of the argument. When calling the member foo,
+Gateway::foo hides Computer::foo so Gateway::foo is called twice.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

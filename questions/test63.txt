@@ -20,4 +20,4 @@
 ОТВЕТ РАЗВЕРНУТЫЙ:
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

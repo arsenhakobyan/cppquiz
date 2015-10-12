@@ -1,23 +1,61 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What gets printed? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+struct mybase
+{
+    int x;
+
+    template <int RANGE>
+        virtual void print()
+        {
+            std::cout << RANGE + x + 1 << std::endl;
+        }
+};
+
+struct myderived : public mybase
+{
+    template <int RANGE> 
+        void print()
+        {
+            std::cout << RANGE + x + 2 << std::endl;
+        }
+};
+
+int main(int argc, char** argv)
+{
+    mybase* b = new myderived;
+
+    b->x = 1;
+
+    b->print<5>();
+
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 2
+2) 6
+3) 7
+4) 8
+5) code is ill-formed
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+5) code is ill-formed
 
 <br> <br>
-ОТВЕТ РАЗВЕРНУТЫЙ:
+ОТВЕТ РАЗВЕРНУТЫЙ
+Member function templates cannot be declared virtual. This constraint is
+imposed because the usual implementation of the virtual function call
+mechanism uses a fixed-size table with one entry per virtual function.
+However, the number of instantiations of a member function template is not
+fixed until the entire program has been translated.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>
