@@ -1,23 +1,37 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What value gets printed by the program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+int main(int argc, char** argv)
+{
+    int x;
+    x = 1, 2, 3;
+    std::cout << x << std::endl;
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 1
+2) 2
+3) 3
+4) 6
+5) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+1) 1
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+The operands to the comma operator are evaluated from left to right. The value
+of the left hand expression is discarded. The type and value of the result are
+the type type and value of the right hand operand. Note: assignment takes
+precedence over the comma operator, so in this case x=1 is evaluated first;
+than x, 2, 3
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

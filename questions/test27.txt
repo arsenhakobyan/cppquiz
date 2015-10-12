@@ -1,23 +1,33 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2>  What value should be printed for x? </h2>
 </div>
 <pre><code class="language-cpp">
-
+#include <iostream>
+int main()
+{
+    int x = int() = 3;
+    std::cout << x << std::endl;
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 0
+2) 3
+3) undefined
+4) won't compile
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+4) won't compile
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+int() creates a temporary variable which is an rvalue. The temporary variable
+that is created can not be assigned to since it is an rvalue. Thus this code
+should not compile
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

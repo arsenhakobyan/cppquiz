@@ -1,23 +1,52 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Which of the following functions are found when called in main during
+name lookup? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
+namespace standards
+{
+    struct datastructure
+    {
+    };
+    void foo(const datastructure& ds)
+    {
+    }
+    void bar()
+    {
+    }
+}
 
+int main(int argc, char** argv)
+{
+    standards::datastructure ds;
+    foo(ds);
+    bar();
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) foo
+2) bar
+3) foo and bar
+4) neither
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+1) foo
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+In the C++ programming language, argument-dependent lookup (ADL), or
+argument-dependent name lookup,[1] applies to the lookup of an unqualified
+function name depending on the types of the arguments given to the function
+call. This behavior is also known as Koenig lookup, as it is often attributed
+to Andrew Koenig, though he is not its inventor.
 
+In this case, the namespace 'standards' is searched for a function 'foo' because its argument 'ds' is defined in that namespace. For function 'bar', no additional namespaces are searched and the name is not found. 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

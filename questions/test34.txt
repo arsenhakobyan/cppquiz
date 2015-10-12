@@ -1,23 +1,36 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Will "Hello World" be printed by the program below? </h2>
 </div>
 <pre><code class="language-cpp">
+int main(int argc, char** argv)
+{
+    int array[33];
 
+    if ( &array[4] < &array[23] )
+    {
+        std::cout << "Hello World" << std::endl;
+    }
+
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) yes
+2) no
+3) implementation defined
+4) unspecified
+5) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+1) yes
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+Pointer comparison with greater and less than relational operators is defined
+within the same array.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

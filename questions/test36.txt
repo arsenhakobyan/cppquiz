@@ -1,23 +1,45 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What value gets printed by the program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+int main(int argc, char** argv)
+{
+    int x = 0;
+    int y = 0;
+
+    if (x++ && y++)
+    {
+        y += 2;
+    }
+
+    std::cout << x + y << std::endl;
+
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 1
+2) 2
+3) 3
+4) 4
+5) undefined 
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+1) 1
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+If the first operand to the logical AND operator evaluates to false the second
+operand is guaranteed not to evaluate. Note: the logical OR operator is
+guaranteed not to evaluate the second operand if the first operand is true.
+Note: for the logical AND and OR operators, all side effects of the first
+expression, except for destruction of temporaries, happen before the second
+expression is evaluated.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

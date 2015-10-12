@@ -1,23 +1,34 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2>  What value for y gets printed in the program below? </h2>
 </div>
 <pre><code class="language-cpp">
-
+#include <iostream>
+const int x = 12;
+int main(int argc, char** argv)
+{
+    enum dog
+    {
+        x = x,
+        y
+    };
+    std::cout << y << std::endl;
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 12
+2) 13
+3) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+2) 13
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+An Enumeration's point of declaration is after its definition (which includes the initialization). Therefore in this case the value of the enum 'x' is initialized with the global 'x' which equals 12.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

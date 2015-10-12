@@ -1,23 +1,50 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Which lines of code below should not compile? </h2>
 </div>
 <pre><code class="language-cpp">
+1  struct Foo
+2  {
+3  };
+4 
+5  struct Bar
+6  {
+7  };
+8 
+9 
+10 int main()
+11 {
+12     Foo* f = new Foo;
+13 
+14     Bar* b1 = f;
+15     Bar* b2 = static_cast<Bar*>(f);
+16     Bar* b3 = dynamic_cast<Bar*>(f);
+17     Bar* b4 = reinterpret_cast<Bar*>(f);
+18     Bar* b5 = const_cast<Bar*>(f);
+19 
+20     return 0;
+21 }
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 14
+2) 14,15,18
+3) 14,17,18
+4) 14,15,17,18
+5) 14,15,16,18
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+5) 14,15,16,18
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+Only reinterpret_cast can be used to convert a pointer to an object to a
+pointer to an unrelated object type. The dynamic cast would fail at run-time,
+however on most compilers it will also fail to compile because there are no
+virtual functions in the class of the pointer being casted.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

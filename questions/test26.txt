@@ -1,23 +1,36 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Which of the following lines should NOT compile? </h2>
 </div>
 <pre><code class="language-cpp">
-
+1 int main()
+2 {
+3     int a = 2;
+4 
+5     int* b = &a;
+6 
+7     int const* c = b;
+8 
+9     b = c;
+10 
+11    return 0;
+12 } 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 7 and 9
+2) 7
+3) 9
+4) none
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+3) 9
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+int* can be implicity converted to int const* -- 4.4. There is no implicit
+conversion from int const* to int*.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

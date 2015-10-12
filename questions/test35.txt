@@ -1,23 +1,45 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What will produce the program below? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+struct Foo
+{
+};
+
+struct Bar 
+{
+};
+
+int main(int argc, char** argv)
+{
+    Foo* f = new Foo;
+    Bar* b = new Bar;
+
+    if ( f == b )
+        std::cout << "EQUAL" << std::endl;
+    else
+        std::cout << "NOT EQUAL" << std::endl;
+
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) EQUAL
+2) NOT EQUAL
+3) Won't compile
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+3) Won't compile
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+Distinct pointer types can not be compared with equality operators
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

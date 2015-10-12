@@ -1,23 +1,37 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the value of x at the end of main? </h2>
 </div>
 <pre><code class="language-cpp">
-
+int main(int argc, char** argv)
+{
+    int x = 50 % -7;
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 1
+2) -1
+3) implementation defined
+4) undefined
+5) compiler error
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+3) implementation defined
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+The sign in such cases(i.e when one or both operands are negative) is
+implementation-defined. The spec says in §5.6/4 (C++03),
 
+The binary / operator yields the quotient, and the binary % operator yields
+the remainder from the division of the first expression by the second. If the
+second operand of / or % is zero the behavior is undefined; otherwise (a/b)*b
++ a%b is equal to a. If both operands are nonnegative then the remainder is
+nonnegative; if not, the sign of the remainder is implementation-defined.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

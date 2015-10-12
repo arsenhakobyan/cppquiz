@@ -1,23 +1,24 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> In addition to const_cast, which cast can be used to cast away constness? </h2>
 </div>
 <pre><code class="language-cpp">
-
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) static_cast
+2) dynamic_cast
+3) reinterpret_cast
+4) none of the above
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+4) none of the above
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+Only const_cast (or c-style casts) can be used to cast away constness
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

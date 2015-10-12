@@ -1,23 +1,36 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What value is printed out for the variable x? </h2>
 </div>
 <pre><code class="language-cpp">
-
+#include <iostream>
+int x;
+int main()
+{
+    int y;
+    std::cout << x << std::endl;
+    std::cout << y << std::endl;
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 0
+2) max int value
+3) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+1) 0
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+Variables with static storage duration are zero initialized. Note that x has
+static storage duration even though the static keyword is not used. According
+to the standard: "All objects which do not have dynamic storage duration, do
+not have thread storage duration, and are not local have static storage
+duration"
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

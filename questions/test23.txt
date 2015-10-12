@@ -1,23 +1,62 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2>  Of the variable definitions below, which ones have external linkage and
+can be accessed from another translation unit?  </h2>
 </div>
 <pre><code class="language-cpp">
+int w = 1;
+static int x = 2;
+const int y = 3;
+extern const int z = 4;
 
+int main(int argc, char** argv)
+{
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) w, x, y and z
+2) w, y and z
+3) w and z
+4) y and z
+5) none
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+3) w and z
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+In an executing program, an identifier is represented by storage in memory
+that holds a variable or a compiled function body. Linkage describes this
+storage as it is seen by the linker. There are two types of linkage: internal
+linkage and external linkage.
+
+Internal linkage means that storage is created to represent the identifier
+only for the file being compiled. Other files may use the same identifier name
+with internal linkage, or for a global variable, and no conflicts will be
+found by the linker – separate storage is created for each identifier.
+Internal linkage is specified by the keyword static in C and C++.
+
+External linkage means that a single piece of storage is created to represent
+the identifier for all files being compiled. The storage is created once, and
+the linker must resolve all other references to that storage. Global variables
+and function names have external linkage. These are accessed from other files
+by declaring them with the keyword extern. Variables defined outside all
+functions (with the exception of const in C++) and function definitions
+default to external linkage. You can specifically force them to have internal
+linkage using the static keyword. You can explicitly state that an identifier
+has external linkage by defining it with the extern keyword. Defining a
+variable or function with extern is not necessary in C, but it is sometimes
+necessary for const in C++.
+
+Automatic (local) variables exist only temporarily, on the stack, while a
+function is being called. The linker doesn’t know about automatic variables,
+and so these have no linkage.
+
+So, w has external linkage. x has internal linkage. y has internal linkage. z has external linkage
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

@@ -1,23 +1,52 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What value gets printed by the program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+int main() 
+{ 
+    int x = 3;
+
+    switch(x)
+    {
+        case 0:
+            int x = 1;
+            std::cout << x << std::endl;
+            break;
+        case 3:
+            std::cout << x << std::endl;
+            break;
+        default:
+            x = 2;
+            std::cout
+                << x <<
+                std::endl;
+    }
+
+    return
+        0;
+} 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 0
+2) 1
+3) 2
+4) 3
+5) nothing, it is ill-formed
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+5) nothing, it is ill-formed
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+Jumping into a block and bypassing a declaration with an initialization is
+ill-formed. In this example there are cases which would bypass the declaration
+and initialization of block scope x declaration.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

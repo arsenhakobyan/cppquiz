@@ -1,23 +1,50 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Which lines of code below should cause the program to be undefined? </h2>
 </div>
 <pre><code class="language-cpp">
-
+1 struct Foo
+2 {
+3   virtual ~Foo() {}
+4 };
+5
+6 struct Bar : public Foo
+7 {
+8 };
+9
+10 int main(int argc, char** argv)
+11 {
+12   Foo* f = new Bar;
+13   delete f;
+14   f = 0;
+15   delete f;
+16
+17   Foo* fa = new Bar[10];
+18   delete [] fa;
+19   fa = 0;
+20   delete fa;
+21
+22   return 0;
+23 }
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) none
+2) 13
+3) 15
+4) 18
+5) 20
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+4) 18
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+deleting NULL pointers have no effect. deleting a pointer to a base class
+which points to a derived object is legal assuming the base destructor is
+virtual. deleting an array of objects using a base class pointer is undefined.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>
