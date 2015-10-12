@@ -1,23 +1,31 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the value of the local variable x at the end of main?  </h2>
 </div>
 <pre><code class="language-cpp">
-
+int x = 5;
+int main(int argc, char** argv)
+{
+        int x = x;
+            return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 0
+2) 5
+3) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+3) undefined
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+The local x in main hides the global x before the local x's initializer is
+considered. Therefore the local x is being initialized with itself (the local
+unitialized variable)
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

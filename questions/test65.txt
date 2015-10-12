@@ -1,23 +1,32 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the value of y at the end of main? </h2>
 </div>
 <pre><code class="language-cpp">
-
+const int x = 5;
+int main(int argc, char** argv)
+{
+    int x[x];
+    int y = sizeof(x) / sizeof(int);
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 0
+2) 5
+3) 20
+4) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
 
-
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+The local x does not hide the global x until the end of the declaration. A
+local name will hide a global after the end of the declaration but before the
+beginning of initialization.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

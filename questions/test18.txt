@@ -1,23 +1,49 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What value does size print out? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
+const int SIZE = 5;
+struct tester
+{
+    int array[SIZE];
+    enum 
+    {
+        SIZE = 3
+    };
+    void size()
+    {
+        std::cout << sizeof(array) / sizeof(int);
+    }
+};
 
+int main(int argc, char** argv)
+{
+    tester t;
+    t.size();
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 5
+2) 3
+3) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+3) undefined
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+3.3.6/3 says if reordering member declarations in a class yields an alternate
+valid program the program is ill-formed. In this case the enum SIZE is not in
+scope when array is declared making the array size 5. However if the members
+were reordered to declare array after the definition of the enum the array
+size would be 3. Thus since reordering member declaration changes the program,
+it is undefined.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

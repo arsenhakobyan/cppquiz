@@ -1,23 +1,35 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> The code below is legal? </h2>
 </div>
 <pre><code class="language-cpp">
+int x = 5;
+template <typename T>
+class x
+{
+    T member;
+};
 
+int main(int argc, char** argv)
+{
+    class x<int> y;
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) true
+2) false
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+2) false
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+A template class name can not be the same as any other name in the same
+declarative region. This is also the case for typedef names.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

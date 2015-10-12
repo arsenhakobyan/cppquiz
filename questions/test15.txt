@@ -1,23 +1,48 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Given the code below, the variable y can be accessed in which blocks of
+code? </h2>
 </div>
 <pre><code class="language-cpp">
+int main(int argc, char** argv)
+{
+
+    if ( argc > 10 )
+    {
+
+    }
+    else if (int y = argc - 1 )
+    {
+
+    }
+    else
+    {
+
+    }
+
+    return 0;
+}
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) lines 4-15
+2) lines 4-17
+3) lines 8-11
+4) lines 8-15
+5) lines 8-17
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+4) lines 8-15
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+The variable declared in the else-if did not exist before its declaration and
+can not be used after the end of the else clause. Variables declared in
+conditions of if,else-if,else structures can be used in all subsequent
+conditions and bodies of the if,else-if,else structure.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

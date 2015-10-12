@@ -1,23 +1,39 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Which of the following variables can be accessed in foo's function try
+block handler? </h2>
 </div>
 <pre><code class="language-cpp">
-
+void foo(int x) try
+{
+    int y = 2;
+    throw 1;
+}
+catch(int e)
+{
+}
+int main(int argc, char** argv)
+{
+    foo(3);
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) x and y and e
+2) x and e
+3) y and e
+4) e
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+2) x and e
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+Function parameters are accessible in the try handler. Function local
+variables are NOT accessible in the try handler.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

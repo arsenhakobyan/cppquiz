@@ -1,23 +1,34 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Does the code below legal? </h2>
 </div>
 <pre><code class="language-cpp">
+int x = 5;
+class x
+{
+};
 
+int main(int argc, char** argv)
+{
+        class x y;
+        return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) yes
+2) no
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+1) yes
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+You can have a class and a regular variable with the same name. However the
+class name will been hidden and the elaborated-type-specfier must be used to
+access the class name.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

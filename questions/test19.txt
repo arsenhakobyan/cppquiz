@@ -1,23 +1,46 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What value does foo print out? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
+const int SIZE = 8;
+struct tester
+{
+    void foo()
+    {
+        std::cout << SIZE << std::endl;
+    }
 
+    enum 
+    {
+        SIZE = 2
+    };
+};
+
+int main(int argc, char** argv)
+{
+    tester t;
+    t.foo();
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 8
+2) 2
+3) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+2) 2
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+Names defined at any point in a class are in scope in all member functions of
+the class. Thus the enum SIZE is in scope in the function foo and hides the
+global variable SIZE.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>
