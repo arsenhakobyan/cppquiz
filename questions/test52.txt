@@ -1,23 +1,53 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the output of the program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
+struct Foo
+{
+    Foo() {} 
+    void go()
+    {
+        std::cout << "Foo" << std::endl;
+    }
+};
+struct Bar : public Foo
+{
+    Bar() {}
+    void go()
+    {
+        std::cout << "Bar" << std::endl;
+    }
+};
 
+int main(int argc, char** argv) 
+{ 
+    Bar b;
+
+    const Foo f = b;
+
+    f.go();
+
+    return 0; 
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) Foo
+2) Bar
+3) ill-formed
+4) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+3) ill-formed
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+The code is ill-formed. Non-const member functions can not be called on const
+objects.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

@@ -1,23 +1,56 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What gets printed by this program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+struct Shape
+{
+    virtual void print()
+    {
+        std::cout << "SHAPE" << std::endl;
+    }
+    virtual ~Shape() {}
+};
+
+struct Box : private Shape
+{
+    virtual void print()
+    {
+        std::cout << "BOX" << std::endl;
+    }
+};
+
+int main(int argc, char** argv) 
+{ 
+    Shape* s = new Box;
+
+    s->print();
+
+    delete s;
+
+    return 0; 
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) SHAPE
+2) BOX
+3) undefined
+4) code is ill-formed
+5) unspecified
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+4) code is ill-formed
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+An implicit conversion from a pointer to a derived class, to a pointer to an
+inaccessible (private inheritance) base class is ill-formed. Thus the
+assignment of the new Box to Shape* is ill-formed.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

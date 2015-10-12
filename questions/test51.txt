@@ -1,23 +1,39 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the output of the program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+int main(int argc, char** argv) 
+{ 
+    // assume address of x is 0x822222222
+    int x = 3;
+
+    int*& rpx = &x;
+
+    std::cout << rpx << std::endl;
+
+    return 0; 
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 3
+2) 0x822222222
+3) ill-formed
+4) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+3) ill-formed
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+References can not be initialized with values, so this program is ill-formed.
+In this case rpx should be initialized with a pointer to an int, not with the
+address of an int.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

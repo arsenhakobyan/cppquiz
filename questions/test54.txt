@@ -1,23 +1,53 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What gets printed by this program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+struct Shape
+{
+    void print()
+    {
+        std::cout << "SHAPE" << std::endl;
+    }
+};
+
+struct Box : public Shape
+{
+    void print()
+    {
+        std::cout << "BOX" << std::endl;
+    }
+};
+
+int main(int argc, char** argv)
+{
+    Shape* s1 = new Box;
+
+    s1->print();
+
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) SHAPE
+2) BOX
+3) undefined
+4) code is ill-formed
+5) unspecified
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+1) SHAPE
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+Shape::print is not a virtual function. Therefore Shape::print is called even
+though s1 points to a Box object. If print was virtual, then BOX would be
+printed.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

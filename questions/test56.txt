@@ -1,23 +1,48 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> How many times is Hello World printed by this program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+struct BS
+{
+    BS()
+    {
+        std::cout << "Hello World" << std::endl;
+    }
+};
+
+struct mid1 : public BS { };
+struct mid2 : public BS { };
+struct mid3 : public BS { };
+struct mid4 : public BS { };
+
+struct DR : public virtual mid1, public virtual mid2, public virtual mid3,
+    public mid4 { };
+
+int main(int argc, char** argv) 
+{ 
+    DR d;
+    return 0; 
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 0
+2) 3
+3) 4
+4) undefined
+5) code is ill-formed
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+3) 4
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+4 times. Virtual inheritance affects the class that is inherited virtually.  Therefore the BS base class is not inherited virtually and there are 4 of them within 1 DR object. The virtual inheritance statements in this code are affecting the classes mid1, mid2, mid3, mid4 and not BS.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>
