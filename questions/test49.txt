@@ -1,23 +1,55 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the output of the program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+struct A 
+{ 
+    virtual int foo(int x = 5) 
+    { 
+        return x * 2; 
+    } 
+}; 
+
+struct B : public A 
+{ 
+    int foo(int x = 10) 
+    { 
+        return x * 3; 
+    } 
+}; 
+
+int main(int argc, char** argv) 
+{ 
+    A* a = new B; 
+
+    std::cout << a->foo() << std::endl; 
+
+    return 0; 
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 10
+2) 15
+3) 20
+4) 30
+5) ill-formed
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+2) 15
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+The method B::foo is called but with the default argument of 5 from A::foo. "A
+virtual function call uses the default arguments in the declaration of the
+virtual function determined by the static type of the pointer or reference
+denoting the object. An overriding function in a derived class does not
+acquire default arguments from the function it overrides."
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

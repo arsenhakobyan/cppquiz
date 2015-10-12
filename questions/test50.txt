@@ -1,23 +1,51 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the output of the program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
+class Foo
+{
+    public:
 
+        char c;
+        static double sd;
+        double d;
+        int i;
+};
+
+int main(int argc, char** argv) 
+{ 
+    Foo f = { 72, 3.14 };
+
+    std::cout << f.c + f.d + f.i << std::endl;
+
+    return 0; 
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 72
+2) 75.14
+3) ill-formed
+4) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+2) 75.14
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+"An aggregate is an array or a class with no user-declared constructors, no
+private or protected non-static data members, no base classes, and no virtual
+functions." Aggregates can be initialized by "brace-enclosed, comma separated
+list of initializer-clauses for the members of the aggregate, written in
+increasing subscript or member order." Static data members are skipped during
+this type of initialization so 3.14 initializes d and not sd in this example
+"If there are fewer initializers in the list than there are members in the
+aggregate, then each member not explicitly initialized shall be
+value-initialized". So in this example i is value-initialized to 0.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

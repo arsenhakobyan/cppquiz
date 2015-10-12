@@ -1,23 +1,38 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What will produce the code below? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+const char* Foo()
+{
+    return "Hello World";
+}
+
+int main() 
+{ 
+    const char* str = Foo();
+    std::cout << str << std::endl;
+
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) Hello World
+2) undefined
+3) Won't compile
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+1) Hello World
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+String literals have static storage duration, therefore they can be referenced
+anywhere in the translation unit, even though it is defined in a function
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

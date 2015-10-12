@@ -1,23 +1,27 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Which of the following operators does NOT indicate a sequence point in
+the code? </h2>
 </div>
 <pre><code class="language-cpp">
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) &&
+2) ||
+3) ?
+4) =
+5) ,
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+4) =
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+All of them except the assignment operator indicate a sequence point.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

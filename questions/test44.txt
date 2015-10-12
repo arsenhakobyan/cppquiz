@@ -1,23 +1,49 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What value gets printed by the program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+int foo(int x, int y)
+{
+    return x+y;
+}
+
+int foo(const int x, const int y)
+{
+    return x+y+1;
+}
+
+int main(int argc, char** argv)
+{
+    const int x = 3;
+    const int y = 2;
+
+    std::cout << foo(x,y) << std::endl;
+
+    return 0;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 3
+2) 5
+3) 6
+4) ill-formed
+5) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+4) ill-formed
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+There can only be one function with the same signature. Altering the cv
+qualification of parameters does not change the function signature. Therefore
+the two foo functions have the same signature and the program is ill-formed.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

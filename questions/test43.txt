@@ -1,23 +1,45 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What value gets printed by the program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+int main() 
+{ 
+    int sum = 0;
+
+    int array[3][] = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}};
+
+    for (int i = 0; i < 3 ; ++i)
+    {
+        for (int j = 2; j < 3 ; j++)
+        {
+            sum += array[i][j];
+        }
+    }
+
+    std::cout << sum << std::endl;
+
+    return 0;
+} 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 9
+2) 15
+3) 21
+4) ill-formed
+5) undefined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+4) ill-formed
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+Only the first constant expression in a multiple dimension array can be ommitted. Therefore the declaration of the array in this example is ill-formed.
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>
