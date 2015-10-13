@@ -1,23 +1,28 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Which of the following is a mechanism of static polymorphism? </h2>
 </div>
 <pre><code class="language-cpp">
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) Operator overloading
+2)  Function overloading
+3)  Templates
+4)  All of the above
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+4)  All of the above
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+There are three mechanisms for static polymorphism: templates, macros and
+function overloading.
+see more details in the source below.
 <br>
-<a href="">Source</a>
+<a
+href="http://stackoverflow.com/questions/20781527/is-there-real-static-polymorphism-in-c">Source</a>

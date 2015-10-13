@@ -1,23 +1,34 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> How many instances of an abstract class can be created? </h2>
 </div>
 <pre><code class="language-cpp">
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 1
+2) 65535
+3) 5
+4) 0
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+4) 0
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+An abstract type is defined largely as one that can't be created. You can
+create subtypes of it, but not of that type itself. The CLI will not let you
+do this.
 
+An abstract class has a protected constructor (by default) allowing derived
+types to initialize it.
+
+For example, the base-type Stream is abstract. Without a derived type where
+would the data go? What would happen when you call an abstract method? There
+would be no actual implementation of the method to invoke.
 <br>
-<a href="">Source</a>
+<a
+href="http://stackoverflow.com/questions/2700256/why-cant-create-object-of-an-abstract-class">Source</a>

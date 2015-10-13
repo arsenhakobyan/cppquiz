@@ -1,23 +1,32 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Why reference is not same as a pointer? </h2>
 </div>
 <pre><code class="language-cpp">
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) A reference can never be null.
+2) A reference once established cannot be changed.
+3) Reference doesn't need an explicit dereferencing mechanism.
+4) All of the above.
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+4) All of the above.
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+A pointer can be re-assigned any number of times while a reference can not be
+re-seated after binding.
+Pointers can point nowhere (NULL), whereas reference always refer to an
+object.
+You can't take the address of a reference like you can with pointers.
+There's no "reference arithmetics" (but you can take the address of an object
+pointed by a reference and do pointer arithmetics on it as in &obj + 5).
 
 <br>
-<a href="">Source</a>
+<a href="http://www.indiabix.com/cpp-programming/oops-concepts/001003">Source</a>

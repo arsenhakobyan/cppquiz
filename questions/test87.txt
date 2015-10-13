@@ -1,23 +1,29 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Which of the following is correct about function overloading? </h2>
 </div>
 <pre><code class="language-cpp">
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) The types of arguments are different.
+2) The order of argument is different.
+3) The number of argument is same.
+4) Both 1 and 2.
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+4) Both 1 and 2.
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+You can have multiple definitions for the same function name in the same
+scope. The definition of the function must differ from each other by the types
+and/or the number of arguments in the argument list. You can not overload
+function declarations that differ only by return type.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.indiabix.com/cpp-programming/oops-concepts/discussion-37">Source</a>

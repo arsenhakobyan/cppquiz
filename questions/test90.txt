@@ -1,23 +1,32 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> How can we make a class abstract? </h2>
 </div>
 <pre><code class="language-cpp">
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) By making all member functions constant.
+2) By making at least one member function as pure virtual function.    ￼
+3) By declaring it abstract using the static keyword.
+4) By declaring it abstract using the virtual keyword.
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+2) By making at least one member function as pure virtual function.    ￼
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+Abstract class is the one which doesn't have any object. And pure virtual
+function is the one which doesn't have any definition in the base class but it
+is overridden in derived class.
+
+So by defining pure virtual class, how can we make it abstract because we can
+still create an object of the class and make it normal class.
 
 <br>
-<a href="">Source</a>
+<a
+href="http://www.indiabix.com/cpp-programming/objects-and-classes/discussion-178">Source</a>

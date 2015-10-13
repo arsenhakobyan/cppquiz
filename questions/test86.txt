@@ -1,23 +1,28 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Which of the following statement is correct? </h2>
 </div>
 <pre><code class="language-cpp">
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) A constructor is called at the time of declaration of an object. 
+2) A constructor is called at the time of use of an object.
+3) A constructor is called at the time of declaration of a class.
+4) A constructor is called at the time of use of a class.
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+1) A constructor is called at the time of declaration of an object. 
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+While creating an object, memory is allocated to that object when its
+constructor is invoked, it invokes only once during declaration of object, if
+you have not defined any constructor inside class then default constructor is
+invoked.
 <br>
-<a href="">Source</a>
+<a href="http://www.indiabix.com/cpp-programming/oops-concepts/discussion-22">Source</a>
