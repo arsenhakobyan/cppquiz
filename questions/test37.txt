@@ -1,49 +1,28 @@
 ВОПРОС:
 <div>
-<h2> What value gets printed by the program? </h2>
+<h2> Which of the following is a mechanism of static polymorphism? </h2>
 </div>
 <pre><code class="language-cpp">
-#include <iostream>
 
-struct Foo
-{
-    int x;
-
-    operator int()
-    {
-        return 21;
-    }
-};
-
-int main(int argc, char** argv)
-{
-    Foo f;
-    f.x = 11;
-
-    std::cout << (0?3:f) << std::endl;
-
-    return 0;
-}
 </code></pre>
 
 ОТВЕТЫ:
-1) 0
-2) 3
-3) 11
-4) 21
-5) undefined
+1) Operator overloading
+2)  Function overloading
+3)  Templates
+4)  All of the above
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-4) 21
+4)  All of the above
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-The 2nd and 3rd operands to the conditional operator must be of the same type.
-If one of the two can be converted to the other, the conversion will occur.
-Note: if a conversion exists for each of the operands into the other's type,
-the program is ill-formed.
+There are three mechanisms for static polymorphism: templates, macros and
+function overloading.
+see more details in the source below.
 <br>
-<a href="http://www.mycppquiz.com/">Source</a>
+<a
+href="http://stackoverflow.com/questions/20781527/is-there-real-static-polymorphism-in-c">Source</a>

@@ -1,26 +1,46 @@
 ВОПРОС:
 <div>
-<h2> Objects created using new operator are stored in __ memory. </h2>
+<h2> What value gets printed by the program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+struct Foo
+{
+    Foo(int d) : x(d) {}
+    int x;
+};
+
+int main() 
+{ 
+    double x = 3.14;
+
+    Foo f( int(x) );
+
+    std::cout << f.x << std::endl;
+
+    return 0;
+} 
 </code></pre>
 
 ОТВЕТЫ:
-1) Cache
-2) Heap
-3) Stack
-4) none of the above.
+1) 0
+2) 3
+3) 3.14
+4) nothing, its ill-formed
+5) implementation-defined
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-2) Heap
-
+4) nothing, its ill-formed
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-new operator allocates memory dynamically know as Heap/free memory.
+Any construct that could possibly be considered a declaration is a
+declaration. In this example, the second line of main is interpreted as a
+function declaration in preference to an object declaration with
+initialization.
 
 <br>
-<a href="http://www.tutorialspoint.com/cplusplus/cpp_online_quiz.htm">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

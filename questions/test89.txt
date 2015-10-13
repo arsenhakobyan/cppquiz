@@ -1,29 +1,56 @@
 ВОПРОС:
 <div>
-<h2> What happens if the base and derived class contains definition of a function with same prototype? </h2>
+<h2> What gets printed by this program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+struct Shape
+{
+    virtual void print()
+    {
+        std::cout << "SHAPE" << std::endl;
+    }
+    virtual ~Shape() {}
+};
+
+struct Box : private Shape
+{
+    virtual void print()
+    {
+        std::cout << "BOX" << std::endl;
+    }
+};
+
+int main(int argc, char** argv) 
+{ 
+    Shape* s = new Box;
+
+    s->print();
+
+    delete s;
+
+    return 0; 
+}
 </code></pre>
 
 ОТВЕТЫ:
-1) Compiler reports an error on compilation.
-2) Only base class function will get called irrespective of object.
-3) Only derived class function will get called irrespective of object.
-4) Base class object will call base class function and derived class object will
-call derived class function.
+1) SHAPE
+2) BOX
+3) undefined
+4) code is ill-formed
+5) unspecified
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-2) Only base class function will get called irrespective of object.
+4) code is ill-formed
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-If you call function with derived class object it calls base class function.
-
-To prevent this you have to use virtual function concept.
-
+An implicit conversion from a pointer to a derived class, to a pointer to an
+inaccessible (private inheritance) base class is ill-formed. Thus the
+assignment of the new Box to Shape* is ill-formed.
 <br>
-<a href="http://www.indiabix.com/cpp-programming/oops-concepts/discussion-31">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

@@ -1,48 +1,36 @@
 ВОПРОС:
 <div>
-<h2> What value gets printed by the program? </h2>
+<h2> What is the output of this program? </h2>
 </div>
 <pre><code class="language-cpp">
 #include <iostream>
-
-int foo(int x, int y)
+using namespace std;
+int main()
 {
-      return x+y;
-}
-
-double foo(double x, double y)
-{
-      return x+y;
-}
-
-int main(int argc, char** argv)
-{
-      double (*ptr)(int, int);
-
-        ptr = foo;
-
-          std::cout << ptr(3,8) << std::endl;
-
-            return 0;
+    int i;
+    char *arr[] = {"C", "C++", "Java", "VBA"};
+    char *(*ptr)[4] = &arr;
+    cout << ++(*ptr)[2];
+    return 0;
 }
 </code></pre>
 
 ОТВЕТЫ:
-1) 3
-2) 8
-3) 11
-4) ill-formed
-5) undefined
+1) ava
+2) java
+3) c++
+4) compile time error
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-4) ill-formed
+1) ava
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-The return type of a function does not alter the signature (for function
-overloading). However, the return type of a function DOES change the "type" of
-the function and thus the assignment of foo to ptr is not valid.
+In this program we are moving the pointer from first position to second
+position and printing the remaining value. That is why characters 'ava' will
+be printed as the first character is skipped.
 <br>
-<a href="http://www.mycppquiz.com/">Source</a>
+<a
+href="http://www.sanfoundry.com/c-plus-plus-language-interview-questions-pointers-into-arrays/">Source</a>

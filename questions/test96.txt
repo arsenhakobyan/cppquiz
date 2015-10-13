@@ -1,37 +1,64 @@
 ВОПРОС:
 <div>
-<h2> What is the output of the following program? </h2>
+<h2> Which, if any, of the member function definitions below are ill-formed? </h2>
 </div>
 <pre><code class="language-cpp">
-#include<isotream>
+#include <iostream>
 
-using namespace std;
-main()
+int g_x = 44; 
+
+struct Foo 
 { 
-    int x = 1; 
+    int m_x; 
 
-    switch(x) 
-    {
-        default: cout<<”Hello”;
-        case 1: cout<<”Hi”; break;
-    }
+    static int s_x; 
+
+    Foo(int x) : m_x(x) {} 
+
+    int a(int x = g_x) 
+    { 
+        return x + 1; 
+    } 
+
+    int b(int x = m_x) 
+    { 
+        return x + 1; 
+    } 
+
+    int c(int x = s_x) 
+    { 
+        return x + 1; 
+    } 
+}; 
+
+int Foo::s_x = 22; 
+
+int main(int argc, char** argv) 
+{ 
+    Foo f(6); 
+
+    std::cout << f.a() << std::endl; 
+    std::cout << f.b() << std::endl; 
+    std::cout << f.c() << std::endl; 
+
+    return 0; 
 }
 </code></pre>
 
 ОТВЕТЫ:
-1) Hello
-2) Hi
-3) HelloHi
-4) compile error
+1) a
+2) b
+3) c
+4) a and b
+5) none
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-2) Hi
+2) b
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-Control reaches default-case after comparing the rest of case constants.
-
+b is ill-formed. Non-static members can not be used as default arguments.
 <br>
-<a href="http://www.tutorialspoint.com/cplusplus/cpp_online_quiz.htm">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

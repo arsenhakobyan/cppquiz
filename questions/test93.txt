@@ -1,26 +1,56 @@
 ВОПРОС:
 <div>
-<h2> What is required in switch statement to avoid falling through from one case to the next? </h2>
+<h2> What gets printed by this program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include <iostream>
 
+struct Shape
+{
+    virtual void print()
+    {
+        std::cout << "SHAPE" << std::endl;
+    }
+
+    virtual ~Shape() {}
+};
+
+struct Box : public Shape
+{
+    virtual void print(int i)
+    {
+        std::cout << "BOX" << std::endl;
+    }
+};
+
+int main(int argc, char** argv) 
+{ 
+    Shape* s = new Box;
+
+    s->print();
+
+    delete s;
+
+    return 0; 
+}
 </code></pre>
 
 ОТВЕТЫ:
-1) end;
-2) break;
-3) Stop;
-4) a semicolon
+1) SHAPE
+2) BOX
+3) undefined
+4) code is ill-formed
+5) unspecified
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-2) break;
-
+1) SHAPE
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-Each case block needs to be separated from other using the 'break;' keyword,
-otherwise all the following case statements will be also executed.
+SHAPE is printed. A function with a different signature does not override a
+function in a base class even if the function name is the same.
+
 <br>
-<a href="">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>

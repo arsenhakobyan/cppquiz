@@ -1,29 +1,50 @@
 ВОПРОС:
 <div>
-<h2> Which of the following is correct about function overloading? </h2>
+<h2> Which lines of code below should not compile? </h2>
 </div>
 <pre><code class="language-cpp">
+1  struct Foo
+2  {
+3  };
+4 
+5  struct Bar
+6  {
+7  };
+8 
+9 
+10 int main()
+11 {
+12     Foo* f = new Foo;
+13 
+14     Bar* b1 = f;
+15     Bar* b2 = static_cast<Bar*>(f);
+16     Bar* b3 = dynamic_cast<Bar*>(f);
+17     Bar* b4 = reinterpret_cast<Bar*>(f);
+18     Bar* b5 = const_cast<Bar*>(f);
+19 
+20     return 0;
+21 }
 
 </code></pre>
 
 ОТВЕТЫ:
-1) The types of arguments are different.
-2) The order of argument is different.
-3) The number of argument is same.
-4) Both 1 and 2.
+1) 14
+2) 14,15,18
+3) 14,17,18
+4) 14,15,17,18
+5) 14,15,16,18
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-4) Both 1 and 2.
+5) 14,15,16,18
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-You can have multiple definitions for the same function name in the same
-scope. The definition of the function must differ from each other by the types
-and/or the number of arguments in the argument list. You can not overload
-function declarations that differ only by return type.
-
+Only reinterpret_cast can be used to convert a pointer to an object to a
+pointer to an unrelated object type. The dynamic cast would fail at run-time,
+however on most compilers it will also fail to compile because there are no
+virtual functions in the class of the pointer being casted.
 <br>
-<a href="http://www.indiabix.com/cpp-programming/oops-concepts/discussion-37">Source</a>
+<a href="http://www.mycppquiz.com/">Source</a>
