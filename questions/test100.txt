@@ -1,23 +1,26 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Objects created using new operator are stored in __ memory. </h2>
 </div>
 <pre><code class="language-cpp">
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) Cache
+2) Heap
+3) Stack
+4) none of the above.
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+2) Heap
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+new operator allocates memory dynamically know as Heap/free memory.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.tutorialspoint.com/cplusplus/cpp_online_quiz.htm">Source</a>

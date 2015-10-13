@@ -1,23 +1,26 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Choose the invalid identifier from the below </h2>
 </div>
 <pre><code class="language-cpp">
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) Int
+2) bool
+3) DOUBLE
+4) __0__
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+2) bool
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+bool is the reserved keyword and cannot be used an identifier name.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.tutorialspoint.com/cplusplus/cpp_online_quiz.htm">Source</a>

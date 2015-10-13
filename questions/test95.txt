@@ -1,23 +1,25 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Which operator is used to resolve the scope of the global variable? </h2>
 </div>
 <pre><code class="language-cpp">
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) ->
+2) .
+3) *
+4) ::
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+4) ::
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+Scope resolution operator is used to resolve for the global scope of a
+variable if the local and global variables conflict by name.
 <br>
-<a href="">Source</a>
+<a href="http://www.tutorialspoint.com/cplusplus/cpp_online_quiz.htm">Source</a>

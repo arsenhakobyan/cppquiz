@@ -1,23 +1,26 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is required in switch statement to avoid falling through from one case to the next? </h2>
 </div>
 <pre><code class="language-cpp">
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) end;
+2) break;
+3) Stop;
+4) a semicolon
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+2) break;
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+Each case block needs to be separated from other using the 'break;' keyword,
+otherwise all the following case statements will be also executed.
 <br>
 <a href="">Source</a>

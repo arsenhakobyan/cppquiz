@@ -1,23 +1,38 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> Which of the following is the proper declaration of a pointer?  </h2>
 </div>
 <pre><code class="language-cpp">
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) int x;
+2) int &x;
+3) ptr x;
+4) int *x;
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+4) int *x;
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+The choice between "int* p;" and "int *p;" is not about right and wrong, but
+about style and emphasis. C emphasized expressions; declarations were often
+considered little more than a necessary evil. C++, on the other hand, has a
+heavy emphasis on types.
 
+A "typical C programmer" writes "int *p;" and explains it "*p is what is the
+int" emphasizing syntax, and may point to the C (and C++) declaration grammar
+to argue for the correctness of the style. Indeed, the * binds to the name p
+in the grammar.
+
+A "typical C++ programmer" writes "int* p;" and explains it "p is a pointer to
+an int" emphasizing type. Indeed the type of p is int*. I clearly prefer that
+emphasis and see it as important for using the more advanced parts of C++
+well.
 <br>
-<a href="">Source</a>
+<a href="http://www.cprogramming.com/tutorial/quiz/answer6.html">Source</a>

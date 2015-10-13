@@ -1,23 +1,39 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the output of the program given below?  </h2>
 </div>
 <pre><code class="language-cpp">
+#include<iostream.h> 
+int main()
+{
+    int x = 80; 
+    int y& = x;
+    x++;
+    cout << x << " " << --y;
+    return 0;
+}
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 80 80
+2) 81 80
+3) 80 81
+4) compile time error
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+4) compile time error
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+The main issue here is that definition of 'y' is incorrect. The '&' should be
+written before the variable name. Also there are several other issues: missing
+the namespace 'std' before 'cout' and also some compiler will generate an
+error regarding the 'iostream.h' included file. it is more prefferable to
+write #include <iostream> .
 
 <br>
-<a href="">Source</a>
+<a href="http://www.indiabix.com/cpp-programming/references/discussion-139">Source</a>

@@ -1,23 +1,44 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the output of the following program? </h2>
 </div>
 <pre><code class="language-cpp">
+#include<isotream>
 
+using namespace std;
+class abc { 
+    public: 
+        static int x; 
+        int i; 
+
+        abc() {
+            i = ++x;
+        }
+};
+int abc::x;
+
+main() { 
+    abc m, n, p;
+
+    cout<<m.x<<"
+        "<<m.i<<endl;
+}
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) 3 1
+2) 3 3
+3) 1 1
+4) 1 3
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
-
+1) 3 1
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
-
+The static member variable ‘x’ shares common memory among all the objects
+created for the class.
 <br>
-<a href="">Source</a>
+<a href="http://www.tutorialspoint.com/cplusplus/cpp_online_quiz.htm">Source</a>

@@ -1,23 +1,28 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> What is the built in library function to compare two strings? </h2>
 </div>
 <pre><code class="language-cpp">
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) string_cmp()
+2) strcmp()
+3) equals()
+4) str_compare()
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+2) strcmp()
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+strcmp() is the built in function from “string.h” to compare two strings.
+Returns 0 if both are same strings. Returns -1 if first < second string.
+Returns 1 first > second.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.tutorialspoint.com/cplusplus/cpp_online_quiz.htm">Source</a>

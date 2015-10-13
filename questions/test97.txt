@@ -1,23 +1,28 @@
 ВОПРОС:
 <div>
-<h2>  </h2>
+<h2> A single line comment in C++ language source code can begin with _____ </h2>
 </div>
 <pre><code class="language-cpp">
 
 </code></pre>
 
 ОТВЕТЫ:
-1)
-2)
-3)
+1) ;
+2) :
+3) /*
+4) //
 
 <br>
 <br>
 ПРАВИЛЬНЫЙ ОТВЕТ:
+4) //
 
 
 <br> <br>
 ОТВЕТ РАЗВЕРНУТЫЙ:
+Two immediate forward slashes are used to comment a single line. A single can
+be commented by beginning with /* and should be terminated with */ , in
+general used for multi-line comments.
 
 <br>
-<a href="">Source</a>
+<a href="http://www.tutorialspoint.com/cplusplus/cpp_online_quiz.htm">Source</a>
